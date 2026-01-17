@@ -1,15 +1,14 @@
 modLoader = "javafml"
 loaderVersion = "[47,)"
 #issueTrackerURL = ""
-license = ""
+license = "MIT"
 
 [[mods]]
 modId = "endfieldind"
 version = "1.0.0"
 displayName = "EndFieldIndustries"
 authors = "APcp"
-description = '''
-'''
+description = 'End Field Industries'
 #logoFile = ""
 
 [[dependencies.endfieldind]]

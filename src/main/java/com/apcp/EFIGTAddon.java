@@ -2,6 +2,7 @@ package com.apcp;
 
 import com.apcp.api.registry.EFIGTRegistration;
 import com.apcp.common.data.EFIndElements;
+import com.apcp.data.recipes.gregtech.EFIndGTRecipes;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -24,6 +25,7 @@ public class EFIGTAddon implements IGTAddon {
     public String addonModId() {
         return EFIndMod.MOD_ID;
     }
+
     @Override
     public void registerTagPrefixes() {
         // CustomTagPrefixes.init();
@@ -32,6 +34,7 @@ public class EFIGTAddon implements IGTAddon {
     @Override
     public void addRecipes(Consumer<FinishedRecipe> provider) {
         // CustomRecipes.init(provider);
+        EFIndGTRecipes.init(provider);
     }
 
     @Override

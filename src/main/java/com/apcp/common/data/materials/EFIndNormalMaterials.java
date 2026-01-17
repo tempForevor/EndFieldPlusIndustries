@@ -5,7 +5,9 @@ import com.apcp.common.data.elements.EFIndNormalElements;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
+import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
+import com.gregtechceu.gtceu.common.data.GTMaterialBlocks;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 
 import java.util.Collections;
@@ -36,8 +38,7 @@ public class EFIndNormalMaterials {
 
     public static void init(){
         ActiveOriginium =
-                new Material.Builder(EFIndMod.id("ActiveOriginium"))
-                        .dust()
+                new Material.Builder(EFIndMod.id("active_originium"))
                         .liquid(new FluidBuilder().temperature(1223))
                         .ore()
                         .color(0x000000).secondaryColor(0x111111)
@@ -45,24 +46,30 @@ public class EFIndNormalMaterials {
                         .element(EFIndNormalElements.Originium)
                         .gem()
                         .iconSet(MaterialIconSet.GEM_HORIZONTAL)
-                    .buildAndRegister();
+                        .langValue("Active Originium")
+                        .buildAndRegister();
+
+        // May be useful ?
+        TagPrefix.oreRedGranite.setIgnored(ActiveOriginium);
 
         ComplexOpticalCrystal =
-                new Material.Builder(EFIndMod.id("ComplexOpticalCrystal"))
+                new Material.Builder(EFIndMod.id("complex_optical_crystal"))
                         .gem()
                         .dust()
                         .color(0xffffff).secondaryColor(0xeeeeee)
                         .iconSet(MaterialIconSet.GEM_HORIZONTAL)
                         .componentStacks(new MaterialStack(Silicon,1),new MaterialStack(Oxygen,2))
+                        .langValue("Complex Optical Crystal")
                         .buildAndRegister();
 
         OpticalOriginiumCrystal =
-                new Material.Builder(EFIndMod.id("OpticalOriginiumCrystal"))
+                new Material.Builder(EFIndMod.id("optical_originium_crystal"))
                         .gem()
                         .dust()
                         .color(0xffffff)
                         .iconSet(MaterialIconSet.GEM_VERTICAL)
                         .componentStacks(new MaterialStack(ActiveOriginium,12),new MaterialStack(ComplexOpticalCrystal,23))
+                        .langValue("Optical Originium Crystal")
                         .buildAndRegister();
 
     }

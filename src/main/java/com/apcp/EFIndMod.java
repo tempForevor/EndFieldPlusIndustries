@@ -15,6 +15,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.GenericEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -48,24 +49,16 @@ public final class EFIndMod {
 //        modEventBus.addGenericListener(MachineDefinition::class.java) { _: GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> ->
 //            GTLAddMachines.init()
 //        }
-        eventBus.addListener(this::commonSetup);
-        eventBus.addListener(this::clientSetup);
-
-        eventBus.addListener(this::addMaterialRegistries);
-        eventBus.addListener(this::addMaterials);
-        eventBus.addListener(this::modifyMaterials);
+//        eventBus.addListener(this::commonSetup);
+//        eventBus.addListener(this::clientSetup);
+//
+//        eventBus.addListener(this::addMaterialRegistries);
+//        eventBus.addListener(this::addMaterials);
+//        eventBus.addListener(this::modifyMaterials);
         
         eventBus.addGenericListener(GTRecipeType.class,this::registerGTRecipeTypes);
         eventBus.addGenericListener(MachineDefinition.class, this::registerMachines);
         eventBus.addGenericListener(SoundEntry.class, this::registerSounds);
-    }
-
-    public void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-        });
-    }
-
-    private void clientSetup(final FMLClientSetupEvent event) {
     }
 
     /**
@@ -78,41 +71,43 @@ public final class EFIndMod {
         return new ResourceLocation(MOD_ID, path);
     }
 
-    /**
-     * Create a material manager for your mod using GT's API.
-     * You MUST have this if you have custom materials.
-     * Remember to register them not to GT's namespace, but your own.
-     *
-     * @param event
-     */
+
+    @SubscribeEvent
+    public void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            LOGGER.info("Registering End Field Industries Plus...");
+        });
+    }
+
+    @SubscribeEvent
+    private void clientSetup(final FMLClientSetupEvent event) {
+
+    }
+
+    @SubscribeEvent
     private void addMaterialRegistries(MaterialRegistryEvent event) {
         GTCEuAPI.materialManager.createRegistry(MOD_ID);
     }
 
-    /**
-     * You will also need this for registering custom materials
-     * Call init() from your Material class(es) here
-     *
-     * @param event
-     */
+    @SubscribeEvent
     private void addMaterials(MaterialEvent event) {
         EFIndMaterials.init();
     }
 
-    /**
-     * (Optional) Used to modify pre-existing materials from GregTech
-     *
-     * @param event
-     */
+    @SubscribeEvent
     private void modifyMaterials(PostMaterialEvent event) {
         EFIndMaterials.modify();
     }
 
     private void registerSounds(GTCEuAPI.RegisterEvent<ResourceLocation,SoundEntry> event) {
+
     }
 
     private void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation,MachineDefinition> event) {
+
     }
 
-    public void registerGTRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation,GTRecipeType> event) {}
+    public void registerGTRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation,GTRecipeType> event) {
+
+    }
 }
