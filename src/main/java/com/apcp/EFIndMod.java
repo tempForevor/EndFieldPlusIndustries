@@ -80,30 +80,30 @@ public final class EFIndMod {
     }
 
     @SubscribeEvent
-    private void clientSetup(final FMLClientSetupEvent event) {
+    public void clientSetup(final FMLClientSetupEvent event) {
 
     }
 
     @SubscribeEvent
-    private void addMaterialRegistries(MaterialRegistryEvent event) {
+    public void addMaterialRegistries(MaterialRegistryEvent event) {
         GTCEuAPI.materialManager.createRegistry(MOD_ID);
     }
 
     @SubscribeEvent
-    private void addMaterials(MaterialEvent event) {
+    public void addMaterials(MaterialEvent event) {
         EFIndMaterials.init();
     }
 
     @SubscribeEvent
-    private void modifyMaterials(PostMaterialEvent event) {
+    public void modifyMaterials(PostMaterialEvent event) {
         EFIndMaterials.modify();
     }
 
-    private void registerSounds(GTCEuAPI.RegisterEvent<ResourceLocation,SoundEntry> event) {
+    public void registerSounds(GTCEuAPI.RegisterEvent<ResourceLocation,SoundEntry> event) {
 
     }
 
-    private void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation,MachineDefinition> event) {
+    public void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation,MachineDefinition> event) {
 
     }
 

@@ -137,6 +137,9 @@ dependencies {
     mappings loom.officialMojangMappings()
     forge "net.minecraftforge:forge:$project.forge_version"
 
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:$mixin_extras_version"))
+    implementation(include("io.github.llamalad7:mixinextras-forge:$mixin_extras_version"))
+
     compileOnly("org.jetbrains:annotations:26.0.1")
 
     // Mixin

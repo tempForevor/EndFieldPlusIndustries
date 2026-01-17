@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/endfieldind.iml" filepath="$PROJECT_DIR$/.idea/modules/endfieldind.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/endfieldind.main.iml" filepath="$PROJECT_DIR$/.idea/modules/endfieldind.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/endfieldind.test.iml" filepath="$PROJECT_DIR$/.idea/modules/endfieldind.test.iml" />
     </modules>
